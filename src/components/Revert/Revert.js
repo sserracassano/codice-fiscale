@@ -57,46 +57,48 @@ export const Revert = ({ datiPersonali, onDataUpdate, comuni }) => {
   };
 
   return (
-    <Stack direction="column">
-      {datiPersonali ? (
-        <>
+    <div className="Field">
+      <Stack direction="column">
+        {datiPersonali ? (
+          <>
+            <Tag size="lg" style={{ padding: "8px", margin: "16px" }}>
+              Il sesso è: {datiPersonali.sex}
+            </Tag>
+            <Tag size="lg" style={{ padding: "8px", margin: "16px" }}>
+              La data di nascita è: {datiPersonali.dateOfBirth} *
+            </Tag>
+            <Tag size="lg" style={{ padding: "8px", margin: "16px" }}>
+              Il luogo di nascita è: {datiPersonali.city}
+            </Tag>
+          </>
+        ) : (
           <Tag size="lg" style={{ padding: "8px", margin: "16px" }}>
-            Il sesso è: {datiPersonali.sex}
+            Inserisci i dati nella form per ricavare i dati personali
           </Tag>
-          <Tag size="lg" style={{ padding: "8px", margin: "16px" }}>
-            La data di nascita è: {datiPersonali.dateOfBirth} *
-          </Tag>
-          <Tag size="lg" style={{ padding: "8px", margin: "16px" }}>
-            Il luogo di nascita è: {datiPersonali.city}
-          </Tag>
-        </>
-      ) : (
-        <Tag size="lg" style={{ padding: "8px", margin: "16px" }}>
-          Inserisci i dati nella form per ricavare i dati personali
-        </Tag>
-      )}
-      <Form
-        ref={formRef}
-        onChange={setFormValue}
-        onCheck={setFormError}
-        formValue={formValue}
-        model={revertModel}
-      >
-        <Field
-          name="codiceFiscale"
-          label="Codice Fiscale"
-          error={formError.codiceFiscale}
-        />
+        )}
+        <Form
+          ref={formRef}
+          onChange={setFormValue}
+          onCheck={setFormError}
+          formValue={formValue}
+          model={revertModel}
+        >
+          <Field
+            name="codiceFiscale"
+            label="Codice Fiscale"
+            error={formError.codiceFiscale}
+          />
 
-        <Button appearance="primary" onClick={handleSubmit}>
-          Ricava i Dati
-        </Button>
-      </Form>
-      <div style={{ fontSize: "10px", padding: "16px" }}>
-        * Si presuppone che l'età della persona sia compresa tra 0 e 100 anni.
-        Se la persona ha più di 100 anni la data corretta non sarà "20XX" ma
-        "19XX".
-      </div>
-    </Stack>
+          <Button appearance="primary" onClick={handleSubmit}>
+            Ricava i Dati
+          </Button>
+        </Form>
+        <div style={{ fontSize: "10px", padding: "16px" }}>
+          * Si presuppone che l'età della persona sia compresa tra 0 e 100 anni.
+          Se la persona ha più di 100 anni la data corretta non sarà "20XX" ma
+          "19XX".
+        </div>
+      </Stack>
+    </div>
   );
 };
