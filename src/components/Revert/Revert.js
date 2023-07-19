@@ -57,7 +57,7 @@ export const Revert = ({ datiPersonali, onDataUpdate, comuni }) => {
   };
 
   return (
-    <div className="Field">
+    <div className="Revert">
       <Stack direction="column">
         {datiPersonali ? (
           <>
